@@ -12,7 +12,24 @@ import { useToast as useUiToast } from "../components/ui/use-toast";
 import { ChevronLeft, ChevronRight, CheckCircle2 } from "lucide-react";
 import { api } from "../lib/api";
 
-const propertyTypes = ["خيمة","نُزل","عريش","كرافان","بود","غلمبينغ"];
+// const propertyTypes = ["خيمة","نُزل","عريش","كرافان","بود","غلمبينغ"];
+
+// أنواع المخيمات (عربي موحّد)
+const propertyTypes = [
+  "مخيمات الخيام التقليدية (Tent Camping)",
+  "(RV / Caravan Camping) مخيمات الكرفانات ",
+  "مخيمات الغابات والجبال (Forest / Mountain Camps)",
+  "التخييم الفندقي (Glamorous Camping)",
+  "Safari / Dome / Bubble خيام",
+  "مخيمات بيئية (Eco Camps)",
+  "مخيمات المزارع (Farm Camps)",
+  "مخيمات الشواطئ (Beach Camps)",
+  "مخيمات الصحراء (Desert Camps)",
+  "مخيمات المغامرات (Adventure Camps)",
+  "مخيمات الفلك والنجوم (Astronomy Camps)",
+  "مخيمات اليوغا والعافية (Wellness Camps)",
+];
+
 
 const ARAB_COUNTRIES = [
   { code: "DZ", label: "الجزائر (Algeria)" },
@@ -99,7 +116,7 @@ function StepProfile({ data, setData }: { data: WizardForm; setData: React.Dispa
 
   return (
     <div className="space-y-6">
-      <div className="text-lg font-semibold">🏕️ أنشئ ملفك الشخصي (Create your profile)</div>
+      <div className="text-lg font-semibold">🏕️ أضف مخيم جديد(Create your profile)</div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div>

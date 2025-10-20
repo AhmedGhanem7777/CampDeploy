@@ -86,7 +86,7 @@ const Login = () => {
             <Tent className="w-10 h-10 text-primary-foreground" />
           </div>
           <h2 className="text-3xl font-bold text-white mt-2">Camply</h2>
-          <p className="text-gray-300 mt-1">نظام إدارة المخيمات</p>
+          {/* <p className="text-gray-300 mt-1">نظام إدارة المخيمات</p> */}
         </div>
 
         {/* الفورم */}

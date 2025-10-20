@@ -138,7 +138,7 @@ const CampCard = ({
             <div className="flex items-center gap-1">
               <Star className="w-5 h-5 fill-yellow-500 text-yellow-500" />
               <span className="font-medium">{safeRating ? safeRating.toFixed(1) : "-"}</span>
-              <span className="text-muted-foreground text-sm">(تقييم)</span>
+              <span className="text-muted-foreground text-sm">(الأراء)</span>
             </div>
 
             <div className="flex items-center gap-2">

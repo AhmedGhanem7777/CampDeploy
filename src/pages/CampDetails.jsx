@@ -16,6 +16,12 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { da } from "zod/v4/locales";
+// في أعلى الملف
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+
+import { WhatsAppCircle } from "@/pages/WhatsAppCircle";
+
 
 const FALLBACK = "https://images.unsplash.com/photo-1532555283690-cbf89e69cec7";
 const formatUSD = (v) =>
@@ -557,7 +563,7 @@ export default function CampDetails() {
             <div className="lg:col-span-2 space-y-8">
               {(parsed?.basics?.name || parsed?.basics?.propertyType || parsed?.basics?.website) && (
                 <div className="space-y-3">
-                  <h2 className="text-xl font-semibold">الأساسيات</h2>
+                  <h2 className="text-xl font-semibold">تفاصيل المخيم</h2>
                   <div className="grid sm:grid-cols-3 gap-3 text-sm">
                     <div><span className="text-muted-foreground">الاسم: </span><span className="font-medium">{parsed?.basics?.name || "-"}</span></div>
                     <div><span className="text-muted-foreground">النوع: </span><span className="font-medium">{parsed?.basics?.propertyType || "-"}</span></div>
@@ -700,7 +706,7 @@ export default function CampDetails() {
                 <div className="text-sm text-muted-foreground">اختر نوع اليوم والإقامة</div>
 
                 <div className="flex items-center justify-between gap-2">
-                  <div className="text-sm font-medium">نوع اليوم</div>
+                  <div className="text-sm font-medium">الايام</div>
                   <div className="flex gap-2">
                     <Button
                       type="button"
@@ -708,7 +714,7 @@ export default function CampDetails() {
                       onClick={() => setDayType("weekday")}
                       className={dayType === "weekday" ? "bg-primary text-primary-foreground" : ""}
                     >
-                      يوم عادي
+                      يوم الاسبوع
                     </Button>
                     <Button
                       type="button"
@@ -716,7 +722,7 @@ export default function CampDetails() {
                       onClick={() => setDayType("holiday")}
                       className={dayType === "holiday" ? "bg-primary text-primary-foreground" : ""}
                     >
-                      عطلة
+                      يوم العطله
                     </Button>
                   </div>
                 </div>
@@ -804,7 +810,7 @@ export default function CampDetails() {
                   {bookingError && <div className="text-xs text-destructive">{bookingError}</div>}
 
                   <Button className="w-full flex items-center justify-center gap-2" type="button" onClick={bookNow} disabled={bookingBusy}>
-                    <WhatsAppIcon className="w-4 h-4" />
+                    {/* <WhatsAppIcon className="w-4 h-4" /> */}
                     {bookingBusy ? "جارٍ إنشاء الحجز…" : "احجز الآن (واتساب)"}
                   </Button>
                 </div>
@@ -875,11 +881,11 @@ export default function CampDetails() {
                 )}
               </div>
 
-              <div className="rounded-lg border bg-background p-4 space-y-2 text-sm">
+              {/* <div className="rounded-lg border bg-background p-4 space-y-2 text-sm">
                 <div className="text-muted-foreground">معلومات إضافية</div>
                 <div>المعتمد بتاريخ: <span className="font-medium">{formatDate(details?.request?.submittedOn)}</span></div>
                 <div>العملة: <span className="font-medium">{details?.currencyCode || "USD"}</span></div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
