@@ -563,7 +563,7 @@ export default function AllCamps() {
                 </div>
 
                 {/* نوع المخيم */}
-                <div className="space-y-2">
+                {/* <div className="space-y-2">
                   <label className="text-sm text-muted-foreground">نوع المخيم</label>
                   <Select
                     value={campType || ""}
@@ -594,12 +594,12 @@ export default function AllCamps() {
                       مسح النوع
                     </Button>
                   )}
-                </div>
+                </div> */}
 
                 {/* المحافظة */}
                 <div className="space-y-2">
                   <label className="text-sm text-muted-foreground">المحافظة</label>
-                  <Input value={stateName} onChange={(e) => { setStateName(e.target.value); setPageIndex(1); }} placeholder="اكتب اسم المحافظة أو الولاية" />
+                  <Input value={stateName} onChange={(e) => { setStateName(e.target.value); setPageIndex(1); }} placeholder="اكتب اسم المحافظة" />
                 </div>
 
                 {/* المدينة */}

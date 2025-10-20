@@ -6,11 +6,13 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import heroCamp1 from "@/assets/hero-camp-1.jpg";
 import heroCamp2 from "@/assets/hero-camp-2.jpg";
 import heroCamp3 from "@/assets/hero-camp-3.jpg";
+import heroCamp4 from "@/assets/WhatsApp Image 2025-10-20 at 00.11.27_0e48196f.jpg";
 
 const slides = [
   { image: heroCamp1, title: "اكتشف سحر الشتاء في عُمان!", description: "أكثر من 300 مخيم جاهز للحجز الفوري في مختلف الولايات.", cta: "تصفح جميع المخيمات" },
   { image: heroCamp2, title: "عيش أجواء البرّ السعودي على أصولها!", description: "من مخيمات العلا إلى القصيم وصولا إلى الرياض – كل التجارب في مكان واحد", cta: "تصفح جميع المخيمات" },
   { image: heroCamp3, title: "تجربة تخييم فاخرة في قلب الإمارات", description: "اختر من بين أفضل المخيمات في ليوا، دبي، الذيد والعين وأبوظبي", cta: "تصفح جميع المخيمات" },
+  // { image: heroCamp4, title: "اكتشف سحر الشتاء في عُمان!", description: "أكثر من 300 مخيم جاهز للحجز الفوري في مختلف الولايات.", cta: "تصفح جميع المخيمات" },
 ];
 
 export default function HeroCarousel() {

@@ -13,6 +13,32 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 /* قوائم ثابتة (نفس الديزاين) */
 // const propertyTypes = ["خيمة","نُزل","عريش","كرافان","بود","غلمبينغ"];
 
+const arabCountries = [
+  "مصر",
+  "السعودية",
+  "الإمارات",
+  "الكويت",
+  "قطر",
+  "البحرين",
+  "عمان",
+  "الأردن",
+  "لبنان",
+  "سوريا",
+  "فلسطين",
+  "العراق",
+  "اليمن",
+  "المغرب",
+  "الجزائر",
+  "تونس",
+  "ليبيا",
+  "السودان",
+  "موريتانيا",
+  "جيبوتي",
+  "الصومال",
+  "جزر القمر"
+];
+
+
 // أنواع المخيمات (عربي موحّد)
 const propertyTypes = [
   "مخيمات الخيام التقليدية (Tent Camping)",
@@ -236,23 +262,41 @@ function StepLocation({ data, setData }) {
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div>
-          <label className="text-sm font-medium">الدولة *</label>
-          <Input value={data.location.country} onChange={(e) => update({ country: e.target.value })} placeholder="عُمان" />
-        </div>
+<div>
+  <label className="text-sm font-medium">الدولة (Country)*</label>
+
+  <Select
+    value={data.profile.country || undefined}
+    onValueChange={(v) => update({ country: v })}
+  >
+    <SelectTrigger className="w-full">
+      <SelectValue dir="rtl" placeholder="اختر الدولة" />
+    </SelectTrigger>
+
+    <SelectContent className="max-h-60 overflow-auto" dir="rtl">
+      {arabCountries.map((country) => (
+        <SelectItem key={country} value={country}>
+          {country}
+        </SelectItem>
+      ))}
+    </SelectContent>
+  </Select>
+
+</div>
+
         <div>
           <label className="text-sm font-medium">المحافظة *</label>
-          <Input value={data.location.state} onChange={(e) => update({ state: e.target.value })} placeholder="مسقط" />
+          <Input value={data.location.state} onChange={(e) => update({ state: e.target.value })}  />
         </div>
         <div>
           <label className="text-sm font-medium">المدينة *</label>
-          <Input value={data.location.city} onChange={(e) => update({ city: e.target.value })} placeholder="السيب" />
+          <Input value={data.location.city} onChange={(e) => update({ city: e.target.value })}  />
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div>
           <label className="text-sm font-medium">الرمز البريدي</label>
-          <Input value={data.location.zip} onChange={(e) => update({ zip: e.target.value })} placeholder="123" />
+          <Input value={data.location.zip} onChange={(e) => update({ zip: e.target.value })}  />
         </div>
         <div className="md:col-span-2">
           <label className="text-sm font-medium">العنوان التفصيلي</label>
@@ -411,7 +455,7 @@ function StepEnvironment({ data, setData }) {
   return (
     <div className="space-y-6">
       <div className="space-y-3">
-        <h3 className="text-md font-semibold">نوع التضاريس</h3>
+        <h3 className="text-md font-semibold">نوع التضاريس المحيطه بالمخيم</h3>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
           {terrainOptions.map((item) => (
             <div key={item} className="flex items-center space-x-2 space-x-reverse">
@@ -425,14 +469,35 @@ function StepEnvironment({ data, setData }) {
       <div className="space-y-3">
         <label className="text-md font-semibold">مستوى العزلة</label>
         <Select value={data.environment.seclusion || ""} onValueChange={updateSeclusion}>
-          <SelectTrigger><SelectValue placeholder="اختر مستوى العزلة" /></SelectTrigger>
+          <SelectTrigger dir="rtl"><SelectValue dir="rtl" placeholder="اختر مستوى العزلة" /></SelectTrigger>
           <SelectContent>
             {seclusionOptions.map((option) => (
-              <SelectItem key={option} value={option}>{option}</SelectItem>
+              <SelectItem dir="rtl" key={option} value={option}>{option}</SelectItem>
             ))}
           </SelectContent>
         </Select>
       </div>
+
+      {/* <div className="space-y-3">
+  <label className="text-md font-semibold">مستوى العزلة</label>
+  <Select
+    value={data.environment.seclusion || ""}
+    onValueChange={updateSeclusion}
+  >
+    <SelectTrigger dir="rtl">
+      <SelectValue dir="rtl" placeholder="اختر مستوى العزلة" />
+    </SelectTrigger>
+
+    <SelectContent dir="rtl" className="text-right">
+      {seclusionOptions.map((option) => (
+        <SelectItem key={option} value={option}>
+          {option}
+        </SelectItem>
+      ))}
+    </SelectContent>
+  </Select>
+</div> */}
+
 
       <div className="space-y-3">
         <h3 className="text-md font-semibold">أنشطة متوفرة</h3>
@@ -472,15 +537,15 @@ function StepRulesPricing({ data, setData }) {
         <h3 className="text-md font-semibold">أوقات الدخول والخروج</h3>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div>
-            <label className="text-sm font-medium">بداية وقت الدخول</label>
+            <label className="text-sm font-medium">بداية تسجيل الدخول</label>
             <Input type="time" value={data.rules.checkInFrom} onChange={(e) => updateRules({ checkInFrom: e.target.value })} />
           </div>
           <div>
-            <label className="text-sm font-medium">نهاية وقت الدخول</label>
+            <label className="text-sm font-medium">نهاية تسجيل الدخول</label>
             <Input type="time" value={data.rules.checkInTo} onChange={(e) => updateRules({ checkInTo: e.target.value })} />
           </div>
           <div>
-            <label className="text-sm font-medium">وقت الخروج</label>
+            <label className="text-sm font-medium">تسجيل الخروج</label>
             <Input type="time" value={data.rules.checkOut} onChange={(e) => updateRules({ checkOut: e.target.value })} />
           </div>
           <div>
@@ -491,7 +556,7 @@ function StepRulesPricing({ data, setData }) {
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-md font-semibold">التسعير (بالريال العماني) *</h3>
+        <h3 className="text-md font-semibold">التسعير (دولار أمريكي) *</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-3 p-4 border rounded-lg">
             <h4 className="font-medium text-center">الأيام العادية</h4>
